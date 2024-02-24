@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { increment as incrementNumber } from "../number/numberSlice";
 
 const initialState = {
   counterValue: 0,
@@ -17,6 +18,11 @@ const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.counterValue += action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(incrementNumber, (state, sction) => {
+      state.counterValue++;
+    });
   },
 });
 
