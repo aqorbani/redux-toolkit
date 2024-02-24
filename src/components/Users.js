@@ -7,7 +7,7 @@ export default function Users() {
   const users = useSelector((state) => state.users);
   useEffect(() => {
     dispatch(fetchUsers());
-  });
+  }, [dispatch]);
 
   if (users.loading) {
     <h3>Loading</h3>;
