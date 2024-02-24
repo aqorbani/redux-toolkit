@@ -1,10 +1,35 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectCounter } from "../features/counter/counterSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decrement,
+  increment,
+  selectCounter,
+} from "../features/counter/counterSlice";
 
 const Counter = () => {
   const counter = useSelector(selectCounter);
-  return <div>{counter}</div>;
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <h2>{counter}</h2>
+      <div>
+        <button
+          onClick={() => {
+            dispatch(increment());
+          }}
+        >
+          +
+        </button>
+        <button
+          onClick={() => {
+            dispatch(decrement());
+          }}
+        >
+          -
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default Counter;
